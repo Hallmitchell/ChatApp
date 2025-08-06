@@ -52,7 +52,7 @@
                 /> -->
             <div>
                 <small>
-                    Sent by @{message.expand?.user?.userName}
+                    Sent by @<b>{message.expand?.user?.userName}</b>
                 </small>
                 <p class="msg-text">{message.text}</p>
         
