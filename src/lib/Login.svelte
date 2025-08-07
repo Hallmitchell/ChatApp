@@ -24,15 +24,14 @@
         }
     }
 
-    function signOut(){
-        pb.authStore.clear();
-    }
+    
+    
 
 </script>
 
 {#if $currentUser}
     <p style="color:white;">Signed in as <b>{$currentUser.userName}</b></p>
-    <button on:click={signOut}>Sign Out</button>
+   
 {:else}
     <form on:submit|preventDefault>
         <input
