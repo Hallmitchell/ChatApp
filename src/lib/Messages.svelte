@@ -37,6 +37,7 @@
             user: $currentUser.id,
         };
         const createdMessage = await pb.collection('messages').create(data);
+        newMessage = "";
     }
 
 </script>
