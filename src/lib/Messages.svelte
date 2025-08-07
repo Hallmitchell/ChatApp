@@ -41,7 +41,7 @@
 
 </script>
 
-<div class="messages">
+<div class="messages" style="width:140px; margin:auto;">
     {#each messages as message (message.id)}
         <div class="msg">
             <!-- <img
@@ -51,11 +51,22 @@
                 width="40px"
                 /> -->
             <div>
-                <small>
-                    Sent by @<b>{message.expand?.user?.userName}</b>
-                </small>
-                <p class="msg-text">{message.text}</p>
-        
+                {#if message.user === $currentUser.id }
+                    <small style="color:orange; style=font-size:400%; text-align:right;">
+                        <b>
+                            <p style="text-align:right;">@{message.expand?.user?.userName}</p>
+                        </b>
+                    </small>
+                    <p style="color:white; msg-text; text-align:right">{message.text}</p>
+                {:else}
+                     <small style="color:orange; style=font-size:400%; text-align:left;">
+                        <b>
+                            <p style="text-align-left;">@{message.expand?.user?.userName}</p>
+                        </b>
+                    </small>
+                    <p style="color:black; text-align:left">{message.text}</p>
+
+                {/if}
             </div>
         </div>
     {/each}

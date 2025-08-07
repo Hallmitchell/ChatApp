@@ -31,7 +31,7 @@
 </script>
 
 {#if $currentUser}
-    <p>Signed in as {$currentUser.userName}</p>
+    <p style="color:white;">Signed in as <b>{$currentUser.userName}</b></p>
     <button on:click={signOut}>Sign Out</button>
 {:else}
     <form on:submit|preventDefault>
