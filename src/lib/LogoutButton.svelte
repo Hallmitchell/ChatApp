@@ -7,7 +7,7 @@
         }   
 </script>
 {#if $currentUser}
-    <div style="text-align:left;">
-        <button on:click={signOut}>Sign Out</button>
-    </div>
+    
+    <button on:click={signOut}>Sign Out!</button>
+    
 {/if}

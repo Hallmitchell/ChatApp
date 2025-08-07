@@ -3,10 +3,18 @@
 
     let userName: string;
     let password: string;
-    
+    let loginError: any;
 
     async function login(){
-        await pb.collection('users').authWithPassword(userName, password);
+        try{
+            await pb.collection('users').authWithPassword(userName, password);
+            console.log(pb.authStore.isValid);
+            console.log(pb.authStore.token);
+            console.log(pb.authStore.record.id);
+        } catch (err){
+            console.error("Login Error", err.message)
+            loginError = err; 
+        }
     }
 
     async function signUp(){
@@ -24,31 +32,26 @@
         }
     }
 
-    
-    
-
 </script>
 
-{#if $currentUser}
-    <p style="color:white;">Signed in as <b>{$currentUser.userName}</b></p>
-   
-{:else}
-    <form on:submit|preventDefault>
-        <input
-            placeholder="Username"
-            type="text"
-            bind:value={userName}
-        />
+<form on:submit|preventDefault>
+    <input
+        placeholder="Username"
+        type="text"
+        bind:value={userName}
+    />
 
-        <input
-            placeholder="Password"
-            type="password"
-            bind:value={password}
-        />
-       
-        <button on:click={signUp}>Sign Up</button>
-        <button on:click={login}>Login</button>
-        
+    <input
+        placeholder="Password"
+        type="password"
+        bind:value={password}
+    />
+    
+    <button on:click={signUp}>Sign Up</button>
+    <button on:click={login}>Login</button>
+    
+    {#if loginError}
+        <p style="color:red">Failed to authenticate</p>
+    {/if}
 
-    </form>
-{/if}
+</form>

@@ -42,7 +42,7 @@
 
 </script>
 
-<div class="messages" style="width:140px; margin:auto;">
+<div class="messages" >
     {#each messages as message (message.id)}
         <div class="msg">
             <!-- <img
