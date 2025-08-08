@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount, onDestroy } from 'svelte';
     import { currentUser, pb } from './pocketbase';
+    import SendMessage from './SendMessage.svelte';
     let newMessage: string;
     let messages: any[] = [];
     let unsubscribe: () => void;
@@ -41,7 +42,7 @@
     }
 
 </script>
-
+<p style="color:orange; font-size:150%;"> I appreciate your visit to my chat room. Kindly leave a message, and I will get back to you at my earliest convenience. </p>
 <div class="messages" >
     {#each messages as message (message.id)}
         <div class="msg">
@@ -73,8 +74,4 @@
     {/each}
 </div>
 
-<form on:submit|preventDefault={sendMessage}>
-    <input placeholder="Message" type="text" bind:value={newMessage} />
-    <button type="submit">Send</button>
-    
-</form>
+<SendMessage/>

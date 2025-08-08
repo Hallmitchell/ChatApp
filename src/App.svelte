@@ -4,7 +4,8 @@
   import {currentUser} from "./lib/pocketbase";
   import Logout from "./lib/LogoutButton.svelte";
   import Header from "./lib/Header.svelte";
-  
+  import Direct from "./lib/Direct.svelte";
+
   let homeDirectToggleState = "ChatRoom";
   let toggleButtonText = "Direct Messages"
   function homeDirectToggle(){
@@ -23,13 +24,14 @@
 
 <h1 style="color:orange;">{homeDirectToggleState}</h1>
 <button on:click={homeDirectToggle}>{toggleButtonText}</button>
-<p style="color:orange; font-size:150%;"> I appreciate your visit to my chat room. Kindly leave a message, and I will get back to you at my earliest convenience. </p>
+
 <!-- I want to create a DM button that allows you to pick and choose what user to DM -->
   
 {#if $currentUser}
   {#if homeDirectToggleState == "ChatRoom"}
     <Messages/>
   {:else}
+    <Direct/>
     <h1>In Progress</h1>
   {/if}
 
